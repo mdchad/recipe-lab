@@ -1,6 +1,16 @@
 <h1>Login</h1>
+<%= form_for @user, url: login_path do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@user.errors.count, "error") %> prohibited this blog from being saved:</h3>
 
-<%= form_for :user do |f| %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= f.email_field :email, placeholder: "Enter your email" %>
   <%= f.password_field :password, placeholder: "Enter your password" %>
   <%= f.submit "Login" %>

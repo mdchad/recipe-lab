@@ -5,14 +5,13 @@
       <div class="col-md-4">
         <ul class="nav nav-pills">
         <% if @current_user %>
-          <li role="presentation" class="active"><a href="#">Home</a></li>
-          <li role="presentation"><a href="/logout">Logout</a></li>
-          <li role="presentation"><a href="#"><%= @current_user.username%></a></li>
+          <li role="presentation" class="active"><a href="/">Home</a></li>
+          <li role="presentation"><%= link_to 'Logout', logout_path, method: "delete" %></li>
+          <li role="presentation"><%= link_to "#{@current_user.username}", @user %></li>
         <% else %>
-          <li role="presentation" class="active"><a href="#">Home</a></li>
-          <li role="presentation"><a href="/login">Login</a></li>
-          <li role="presentation"><a href="/signup">Signup</a></li>
-          <li role="presentation"><a href="#"><%= @current_user.username%></a></li>
+          <li role="presentation" class="active"><a href="/">Home</a></li>
+          <li role="presentation"><%= link_to 'Login', login_path %></li>
+          <li role="presentation"><%= link_to 'Signup', signup_path %></li>
         <% end %>
         </ul>
       </div>
@@ -24,6 +23,5 @@
     <p><%= link_to 'Course', courses_path %></p>
     <p><%= link_to 'Recipe', recipes_path %></p>
     <p><%= link_to 'Ingredients', recipes_path %></p>
-
   </div>
 </div>

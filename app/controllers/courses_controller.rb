@@ -4,6 +4,15 @@ class CoursesController < ApplicationController
   end
 
   def create
+    @course = Course.new(course_params)
+    respond_to do |format|
+      if @course.save
+        format.html {redirect_to @course, notice: 'Success!'}
+      else
+        puts @course.errors.messages
+        format.html {render json: @course.errors}
+      end
+    end
   end
 
   def new
@@ -27,5 +36,8 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     redirect_to recipes_url, notice: 'Course was successfully destroyed.'
+  end
+  def course_params
+    params.require(:course).permit(:name)
   end
 end

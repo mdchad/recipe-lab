@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :is_authenticated, except: [:new, :create]
+
   def index
     @users = User.all
   end
@@ -17,15 +18,25 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = current_user
-  end
-
+  # GET /profile
   def show
     @user = current_user
   end
 
+  # GET /profile/edit
+  def edit
+    @user = current_user
+
+  end
+
+  # PATCH/PUT /profile
   def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to root_path, notice: 'Profile was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy

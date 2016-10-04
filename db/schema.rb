@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003061718) do
+ActiveRecord::Schema.define(version: 20161004061839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20161003061718) do
     t.text     "instruction"
     t.integer  "servings"
     t.index ["course_id"], name: "index_recipes_on_course_id", using: :btree
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "username"
   end
 
   add_foreign_key "recipes", "courses"

@@ -1,0 +1,30 @@
+
+<div class="container">
+  <div class="row">
+    <h1>Recipe</h1>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Servings</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @recipes.each do |recipe| %>
+          <tr>
+              <td><%= link_to "#{recipe.name}", recipe%></td>
+              <td><%= recipe.servings %></td>
+              <td><button type="button" class="btn btn-primary"><%= link_to 'Show', recipe,{:id => "link"}%></button>
+              <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_recipe_path(recipe),{:id => "link"}%></button>
+              <button type="button" class="btn btn-danger"><%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?'}%></button></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <button type="button" class="btn btn-success"><%= link_to 'Add', new_recipe_path(@recipe),{:id => "link"}%></button>
+  </div>
+</div>

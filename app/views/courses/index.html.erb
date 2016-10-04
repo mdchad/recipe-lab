@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div class="row">
+    <h1>Courses</h1>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @courses.each do |course| %>
+          <tr>
+              <td><%= course.name %></td>
+              <td><button type="button" class="btn btn-primary"><%= link_to 'Show', course,{:id => "link"}%></button>
+              <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_course_path(course),{:id => "link"}%></button>
+              <button type="button" class="btn btn-danger"><%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' }%></button></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <button type="button" class="btn btn-success"><%= link_to 'New', new_course_path(@course),{:id => "link"}%></button>
+  </div>
+</div>

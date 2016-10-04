@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <p><%= notice %></p>
+      <h1>Course</h1>
+      <p><%= @course.name %></p>
+      <button type="button" class="btn btn-primary"><%= link_to 'Edit', edit_course_path(@course),{:id => "link"}%></button>
+      <%= link_to 'Back', courses_path %>
+    </div>
+  </div>
+</dib>

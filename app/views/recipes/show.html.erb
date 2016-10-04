@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <p class="alert alert-success"><%= notice %></p>
+      <h1><%= @recipe.name %></h1>
+      <p>
+        <strong>Instruction:</strong>
+        <%= @recipe.instruction %>
+      </p>
+      <p>
+      <strong>Servings:</strong>
+      <%= @recipe.servings %>
+      </p>
+      <p>
+      <strong>course:</strong>
+      <%= @recipe.course.id %>
+      </p>
+      <button type="button" class="btn btn-primary"><%= link_to 'Edit', edit_recipe_path(@recipe),{:id => "link"}%></button>
+      <%= link_to 'Back', recipes_path %>
+    </div>
+  </div>
+</dib>

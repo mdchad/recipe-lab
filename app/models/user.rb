@@ -17,4 +17,6 @@ class User < ApplicationRecord
   def self.authenticate(params)
     User.find_by_email(params[:email]).try(:authenticate, params[:password])
   end
+
+  has_many :recipe
 end

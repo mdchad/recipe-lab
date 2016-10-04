@@ -1,17 +1,27 @@
-<h1>Login</h1>
-<%= form_for @user, url: login_path do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= pluralize(@user.errors.count, "error") %> prohibited this blog from being saved:</h3>
+<div class="container">
+  <div class="row">
+    <h1>Login</h1>
+    <%= form_for @user, url: login_path do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h3><%= pluralize(@user.errors.count, "error") %> prohibited this blog from being saved:</h3>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= f.email_field :email, placeholder: "Enter your email" %>
-  <%= f.password_field :password, placeholder: "Enter your password" %>
-  <%= f.submit "Login" %>
-<% end %>
+      <div class="field form-group">
+        <%= f.email_field :email, placeholder: "Enter your email", :class => 'form-control' %>
+      </div>
+      <div class="field form-group">
+        <%= f.password_field :password, placeholder: "Enter your password", :class => 'form-control' %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Login", :class => 'btn btn-default'%>
+      </div>
+    <% end %>
+  </div>
+</div>

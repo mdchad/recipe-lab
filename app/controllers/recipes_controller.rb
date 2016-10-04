@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :is_authenticated, except: [:index, :show]
 
   def index
     @recipes = Recipe.all
@@ -8,6 +9,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @courses = Course.all
+    @recipe.user_id = @current_user.id
     respond_to do |format|
       if @recipe.save
         format.html {redirect_to @recipe, notice: 'Success!'}
@@ -25,7 +27,6 @@ class RecipesController < ApplicationController
 
   def edit
     @courses = Course.all
-
   end
 
   def show
@@ -49,6 +50,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :instruction, :servings, :course_id)
+    params.require(:recipe).permit(:name, :instruction, :servings, :course_id, :user_id)
   end
 end

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <h1>Ingredient</h1>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @ingredients.each do |ingredient| %>
+          <tr>
+              <td><%= link_to "#{ingredient.name}", ingredient%></td>
+              <td><button type="button" class="btn btn-primary"><%= link_to 'Show', ingredient,{:id => "link"}%></button>
+              <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_ingredient_path(ingredient),{:id => "link"}%></button>
+              <button type="button" class="btn btn-danger"><%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Are you sure?'}, id: "link"%></button></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <button type="button" class="btn btn-success"><%= link_to 'Add', new_ingredient_path(@ingredient),{:id => "link"}%></button>
+    <button type="button" class="btn btn-primary"><%= link_to 'Back', root_path, id: 'link' %></button>
+  </div>
+</div>

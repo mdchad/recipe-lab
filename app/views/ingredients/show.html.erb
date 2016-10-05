@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <p class="alert alert-success"><%= notice %></p>
+      <h1>Ingredients</h1>
+      <p>
+        <strong>Name:</strong>
+        <%= @ingredient.name %>
+      </p>
+      <button type="button" class="btn btn-primary"><%= link_to 'Edit', edit_ingredient_path(@ingredient),{:id => "link"}%></button>
+      <%= link_to 'Back', ingredients_path %>
+    </div>
+  </div>
+</dib>

@@ -20,8 +20,23 @@
 <div class="container">
   <div class="row">
     <h1>Main</h1>
-    <p><%= link_to 'Course', courses_path %></p>
-    <p><%= link_to 'Recipe', recipes_path %></p>
-    <p><%= link_to 'Ingredients', recipes_path %></p>
+    <ul><%= link_to 'Course', courses_path %>
+    <% @courses.each do |course| %>
+      <li><%= course.name %></li>
+    <% end %>
+    </ul>
+    <ul><%= link_to 'Recipe', recipes_path %>
+    <% @recipes.each do |recipe| %>
+      <li><%= recipe.name %></li>
+    <% end %>
+    </ul>
+
+
+    <ul><%= link_to 'Ingredients', ingredients_path %>
+    <% @ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+    <% end %>
+    </ul>
+
   </div>
 </div>
